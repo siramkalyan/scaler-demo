@@ -10,9 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(name = "products")
-public class Product {
-    @Id
-    private Long id;
+public class Product extends BaseModel{
+
 
     private String name;
 
@@ -22,4 +21,8 @@ public class Product {
     private Category category;
 
     private String imageUrl;
+
+    public String getName(){
+        return this.name;
+    }
 }

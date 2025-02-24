@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -17,8 +18,12 @@ public interface IProductRepository extends JpaRepository<Product,Long> {
     @Override
     List<Product> findAll();
 
-    @Query("select p.id as id, p.name as name from Product p")
-    List<ProductWithIdAndName> getAllProducts();
+
+    @Query(value = "select id, name, description  from products", nativeQuery = true)
+    List<ProductWithIdAndName> getAllProductsIdAndName();
+
+    @Query(value = "select id,name from products", nativeQuery = true)
+    List<Map<String,Object>> getAllProducts();
 
  //   Optional<Product> queryDistinctByIdId();
 }

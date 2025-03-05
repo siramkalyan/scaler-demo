@@ -8,6 +8,8 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,6 +18,8 @@ import java.util.List;
 public class JsonUtil {
     @Getter
     private static final ObjectMapper objectMapper = new ObjectMapper();
+
+    private static final Logger log = LoggerFactory.getLogger(JsonUtil.class);
 
     @PostConstruct
     public void setUp(){

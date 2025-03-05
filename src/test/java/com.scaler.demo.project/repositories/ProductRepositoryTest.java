@@ -2,6 +2,7 @@
 package com.scaler.demo.project.repositories;
 
 import com.scaler.demo.project.dto.ProductMap;
+import com.scaler.demo.project.model.Category;
 import com.scaler.demo.project.model.Product;
 import com.scaler.demo.project.model.projections.ProductWithIdAndName;
 import com.scaler.demo.project.repository.IProductRepository;
@@ -16,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @SpringBootTest
 
@@ -40,5 +42,12 @@ public class ProductRepositoryTest {
 
 
 
+    }
+
+    @Test
+    void testFetch(){
+        Optional<Product> productOptional = repository.findById(1L);
+        Product product = productOptional.get();
+        Category category  = product.getCategory();
     }
 }

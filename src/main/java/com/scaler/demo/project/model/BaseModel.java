@@ -14,7 +14,7 @@ import java.util.Date;
 public class BaseModel {
 
     @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
     private Date createdDate;

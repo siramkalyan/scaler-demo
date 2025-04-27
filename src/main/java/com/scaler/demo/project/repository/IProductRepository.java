@@ -25,5 +25,8 @@ public interface IProductRepository extends JpaRepository<Product,Long> {
     @Query(value = "select id,name from products", nativeQuery = true)
     List<Map<String,Object>> getAllProducts();
 
+    @Query("SELECT * from products where id = ?1")
+    Product findProductById(Long productId);
+
  //   Optional<Product> queryDistinctByIdId();
 }

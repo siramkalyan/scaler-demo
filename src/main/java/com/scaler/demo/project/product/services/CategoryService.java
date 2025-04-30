@@ -1,10 +1,9 @@
-package com.scaler.demo.project.service.impl;
+package com.scaler.demo.project.product.services;
 
 import com.scaler.demo.project.exceptions.RecordPresentException;
 import com.scaler.demo.project.exceptions.ResourceNotFoundException;
-import com.scaler.demo.project.model.Category;
-import com.scaler.demo.project.repository.ICategoryRepository;
-import com.scaler.demo.project.service.ICategoryService;
+import com.scaler.demo.project.product.models.Category;
+import com.scaler.demo.project.product.repositories.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +12,8 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryServiceImpl implements ICategoryService {
-
-    private final ICategoryRepository  categoryRepository;
+public class CategoryService implements ICategoryService {
+    private final CategoryRepository categoryRepository;
 
 
     @Override
@@ -26,14 +24,13 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Override
     public Category getCategoryByName(String name) {
-        return categoryRepository.findByName(name).get();
+        return categoryRepository.findByName(name);
     }
 
     @Override
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
-
 
     @Override
     public Category addCategory(Category category) {

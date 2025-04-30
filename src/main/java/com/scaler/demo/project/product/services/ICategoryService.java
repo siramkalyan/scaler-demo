@@ -1,6 +1,7 @@
-package com.scaler.demo.project.service;
+package com.scaler.demo.project.product.services;
 
-import com.scaler.demo.project.model.Category;
+
+import com.scaler.demo.project.product.models.Category;
 
 import java.util.List;
 

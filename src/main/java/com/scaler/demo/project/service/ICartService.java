@@ -17,4 +17,6 @@ public interface ICartService {
 
     public void deleteCart(Long cartId);
 
+    CartDTO getCart(Long cartId);
+
 }

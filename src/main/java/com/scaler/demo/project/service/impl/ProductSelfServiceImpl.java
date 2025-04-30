@@ -1,5 +1,6 @@
 package com.scaler.demo.project.service.impl;
 
+import com.scaler.demo.project.exceptions.ResourceNotFoundException;
 import com.scaler.demo.project.model.Category;
 import com.scaler.demo.project.model.Product;
 import com.scaler.demo.project.model.UserDto;
@@ -60,8 +61,50 @@ public class ProductSelfServiceImpl implements ProductService {
     public Product getProductDetails(Long uid, Long pid) {
         Product product =  repository.findProductById(pid);
 
-        UserDto userDto = restTemplate.getForEntity("http://userservice/users/{id}", UserDto.class, uid).getBody();
-        log.info(userDto.getEmailId());
+//        UserDto userDto = restTemplate.getForEntity("http://userservice/users/{id}", UserDto.class, uid).getBody();
+//        log.info(userDto.getEmailId());
         return product;
+    }
+
+    @Override
+    public void deleteProductById(Long id) {
+        repository.findById(id)
+                .ifPresentOrElse(repository::delete,
+                        () -> {throw new ResourceNotFoundException("Product not found!");});
+    }
+
+    @Override
+    public List<Product> getAllProducts() {
+        return repository.findAll();
+    }
+
+    @Override
+    public List<Product> getProductsByCategory(String category) {
+        return repository.findByCategoryName(category);
+    }
+
+    @Override
+    public List<Product> getProductsByBrand(String brand) {
+        return List.of();
+    }
+
+    @Override
+    public List<Product> getProductsByCategoryAndBrand(String category, String brand) {
+        return List.of();
+    }
+
+    @Override
+    public List<Product> getProductsByName(String name) {
+        return  repository.findByName(name);
+    }
+
+    @Override
+    public List<Product> getProductsByBrandAndName(String category, String name) {
+        return List.of();
+    }
+
+    @Override
+    public Long countProductsByBrandAndName(String brand, String name) {
+        return 0L;
     }
 }

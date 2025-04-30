@@ -3,6 +3,8 @@ package com.scaler.demo.project.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.scaler.demo.project.dto.CartDTO;
 import com.scaler.demo.project.dto.CartResponse;
+import com.scaler.demo.project.exceptions.ResourceNotFoundException;
+import com.scaler.demo.project.model.ApiResponse;
 import com.scaler.demo.project.service.ICartService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,5 +59,12 @@ public class CartController {
     private ResponseEntity deleteCart(@PathVariable Long id){
         return null;
        // return cartService.deleteCart(id);
+    }
+
+    @GetMapping("/{cartId}/my-cart")
+    public ResponseEntity<CartDTO> getCart(@PathVariable Long cartId) {
+
+            CartDTO cart = cartService.getCart(cartId);
+            return ResponseEntity.ok().body( cart);
     }
 }

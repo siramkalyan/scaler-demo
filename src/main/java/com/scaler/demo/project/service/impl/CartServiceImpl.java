@@ -61,8 +61,6 @@ public class CartServiceImpl implements ICartService {
        catch (Exception e){
            throw  new FakeStoreExceptionHandler(e.getMessage(),e.getCause(),HttpStatus.INTERNAL_SERVER_ERROR, Arrays.toString(e.getStackTrace()));
        }
-//        return carts2;
-        //return  carts3;
     }
 
     @Override
@@ -80,7 +78,19 @@ public class CartServiceImpl implements ICartService {
 
     @Override
     public void deleteCart(Long cartId) {
+             restTemplate.delete(GET_CART_API_ENDPOINT + "/" + cartId.toString());
+    }
 
+    @Override
+    public CartDTO getCart(Long cartId) {
+        String response =  restTemplate.getForObject("GET_CART_API_ENDPOINT" + "/" + cartId.toString(), String.class);
+        CartDTO cart = null;
+        try {
+            cart = new ObjectMapper().readValue(response, new TypeReference<CartDTO>() {});
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        return cart;
     }
 
 }

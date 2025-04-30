@@ -4,6 +4,7 @@ import com.scaler.demo.project.model.Product;
 import com.scaler.demo.project.model.projections.ProductWithIdAndName;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,8 +26,13 @@ public interface IProductRepository extends JpaRepository<Product,Long> {
     @Query(value = "select id,name from products", nativeQuery = true)
     List<Map<String,Object>> getAllProducts();
 
-    @Query("SELECT * from products where id = ?1")
+    @Query(value = "SELECT * from products where id = ?1", nativeQuery = true)
     Product findProductById(Long productId);
 
- //   Optional<Product> queryDistinctByIdId();
+    List<Product> findByCategoryName(String category);
+
+
+    //@Query("SELECT p FROM Product p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :name, '%'))")
+    List<Product> findByName(@Param("name") String name);
+
 }

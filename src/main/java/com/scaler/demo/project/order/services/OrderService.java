@@ -8,7 +8,9 @@ import com.scaler.demo.project.order.dtos.OrderDto;
 import com.scaler.demo.project.order.mapper.OrderModelMapper;
 import com.scaler.demo.project.order.models.Order;
 import com.scaler.demo.project.order.models.OrderItem;
+import com.scaler.demo.project.order.models.OrderStatus;
 import com.scaler.demo.project.order.repositories.OrderRepository;
+import com.scaler.demo.project.product.models.Product;
 import com.scaler.demo.project.repository.IProductRepository;
 import com.scaler.demo.project.service.ICartService;
 import lombok.RequiredArgsConstructor;
@@ -56,7 +58,7 @@ public class OrderService implements IOrderService {
                 .map(cartItem -> {
                     Product product = cartItem.getProduct();
                     product.setInventory(product.getInventory() - cartItem.getQuantity());
-                    productRepository.save(product);
+                   // productRepository.save(product);
                     OrderItem orderItem = new OrderItem();
                     orderItem.setOrder(order);
                     orderItem.setProduct(cartItem.getProduct());

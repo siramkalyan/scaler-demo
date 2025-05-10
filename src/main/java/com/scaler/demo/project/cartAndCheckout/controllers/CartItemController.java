@@ -33,7 +33,7 @@ public class CartItemController {
             Cart cart = cartService.initializeNewCart(user);
             cartItemService.addCartItem(cart.getId(), productId, quantity);
             return ResponseEntity.ok().body(new ApiResponse("Item added to cart", null));
-        } catch(Exception e) {
+        } catch(Exception | ProductNotPresentException e) {
             return ResponseEntity.status(UNAUTHORIZED).body(new ApiResponse(e.getMessage(), null));
         }
     }
@@ -55,7 +55,7 @@ public class CartItemController {
         try {
             cartItemService.updateItemQuantity(cartId, itemId, quantity);
             return ResponseEntity.ok().body(new ApiResponse("Item updated", null));
-        } catch (ResourceNotFoundException e) {
+        } catch (ResourceNotFoundException | ProductNotPresentException e) {
             return ResponseEntity.status(404).body(new ApiResponse(e.getMessage(), null));
         }
     }

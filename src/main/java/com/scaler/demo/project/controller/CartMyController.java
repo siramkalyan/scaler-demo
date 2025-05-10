@@ -21,12 +21,12 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/cart")
-public class CartController {
+public class CartMyController {
 
     @Autowired
     ICartService cartService;
 
-    Logger logger = LoggerFactory.getLogger(CartController.class);
+    Logger logger = LoggerFactory.getLogger(CartMyController.class);
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)
     private ResponseEntity<List<CartDTO>> loadAllCarts() throws JsonProcessingException {

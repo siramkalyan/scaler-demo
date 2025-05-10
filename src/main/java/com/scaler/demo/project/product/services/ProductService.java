@@ -9,7 +9,6 @@ import com.scaler.demo.project.product.mapper.ProductMapper;
 import com.scaler.demo.project.product.models.Category;
 import com.scaler.demo.project.product.models.Product;
 import com.scaler.demo.project.product.repositories.CategoryRepository;
-import com.scaler.demo.project.product.repositories.ImageRepository;
 import com.scaler.demo.project.product.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,6 @@ public class ProductService implements IProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     private final ProductMapper modelMapper;
-    private final ImageRepository imageRepository;
 
     @Override
     public Product addProduct(AddProductRequest request) {

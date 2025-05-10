@@ -21,7 +21,7 @@ pii-encryption:
 
 server:
   port: ${SERVER_PORT:8082}
-
+api_prefix: /api/v1
 eureka:
   client:
     register-with-eureka: true

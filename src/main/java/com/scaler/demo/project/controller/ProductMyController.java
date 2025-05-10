@@ -16,13 +16,13 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
 @RequestMapping("/api/v1")
-public class ProductController {
+public class ProductMyController {
 
     private ProductService productService;
 
     private RestTemplate restTemplate;
 
-    public ProductController(ProductService productService){
+    public ProductMyController(ProductService productService){
         this.productService = productService;
     }
 

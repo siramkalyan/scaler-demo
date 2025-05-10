@@ -5,6 +5,7 @@ import com.scaler.demo.project.cartAndCheckout.models.Cart;
 import com.scaler.demo.project.cartAndCheckout.models.CartItem;
 import com.scaler.demo.project.cartAndCheckout.repositories.CartItemRepository;
 import com.scaler.demo.project.cartAndCheckout.repositories.CartRepository;
+import com.scaler.demo.project.common.exceptions.ResourceNotFoundException;
 import com.scaler.demo.project.product.exceptions.ProductNotPresentException;
 import com.scaler.demo.project.product.models.Product;
 import com.scaler.demo.project.product.services.IProductService;
